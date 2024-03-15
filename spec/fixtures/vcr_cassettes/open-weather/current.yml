@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openweathermap.org/data/2.5/weather?lat=40.7560233&lon=-73.9845629&units=imperial
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      Content-Type:
+      - application/json
+      User-Agent:
+      - OpenWeather Ruby Client/0.4.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Fri, 15 Mar 2024 20:29:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '489'
+      Connection:
+      - keep-alive
+      X-Cache-Key:
+      - "/data/2.5/weather?lat=40.76&lon=-73.98&units=imperial"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":-73.9808,"lat":40.7648},"weather":[{"id":803,"main":"Clouds","description":"broken
+        clouds","icon":"04d"}],"base":"stations","main":{"temp":66.97,"feels_like":65.48,"temp_min":63.21,"temp_max":70.05,"pressure":1004,"humidity":45},"visibility":10000,"wind":{"speed":20.71,"deg":300,"gust":31.07},"clouds":{"all":75},"dt":1710534505,"sys":{"type":1,"id":5141,"country":"US","sunrise":1710500811,"sunset":1710543758},"timezone":-14400,"id":5125771,"name":"Manhattan","cod":200}'
+  recorded_at: Fri, 15 Mar 2024 20:29:03 GMT
+recorded_with: VCR 6.2.0

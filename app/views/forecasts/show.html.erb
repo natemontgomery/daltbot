@@ -1,5 +1,26 @@
 <section>
-  <h1>Weather for <%= @forecast.address.raw_address %></h1>
+  <h1>Weather for <%= @forecast.address.display_address %></h1>
 
-  <%= @forecast.fetch_current_weather %>
+  <h3>Current</h3>
+
+  <h5>Time</h5>
+  <%= @current_weather.dt %>
+
+  <h5>Temp</h5>
+  <%= "#{@current_weather.main.temp} °F" %>
+
+  <h5>Feels Like</h5>
+  <%= "#{@current_weather.main.feels_like} °F" %>
+
+  <h5>High</h5>
+  <%= "#{@current_weather.main.temp_max} °F" %>
+
+  <h5>Low</h5>
+  <%= "#{@current_weather.main.temp_min} °F" %>
+
+  <h5>Humidity</h5>
+  <%= "#{@current_weather.main.humidity}%" %>
+
+  <h5>Pressure</h5>
+  <%= "#{@current_weather.main.pressure} hpa" %>
 </section>

@@ -6,7 +6,7 @@ class ForecastsController < ApplicationController
   def create
     geocode_address
     @forecast = Forecast.new(address: @address)
-    binding.b
+
     if @forecast.save
       redirect_to forecast_url(@forecast)
     else
@@ -16,6 +16,7 @@ class ForecastsController < ApplicationController
 
   def show
     @forecast = Forecast.find(permitted_params[:id])
+    @current_weather = @forecast.fetch_current_weather
   end
 
   protected
@@ -26,8 +27,9 @@ class ForecastsController < ApplicationController
 
   def geocode_address
     @address = Address.find_or_initialize_by(raw_address: permitted_params[:forecast][:raw_address])
-    binding.b
-    @address.fill_in_address_fields
+    @address.save!
+
+    @address.fill_in_address_attrs
     @address.save!
   end
 end

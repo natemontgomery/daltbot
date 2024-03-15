@@ -21,3 +21,5 @@ Add Geocoder since I know I need to work with addresses.  Using a raw address st
 The point of the app is to show weather forecasts (going to call current a forecast too, seems like a reasonable semantic), so I start with a model for that as the basis of controller othe busines logic.
 Built out initial form for address, looked up API for OpenWeather, found Gem for Ruby client.
 Wrote tests so I can iterate properly, using RSpec with VCR to mock Geocoder and weather API calls.
+OpenWeather API gives free access to current, hourly, and daily weather APIs.  This is sufficient, so just using those.
+Wrote tests for Forecast model, fleshing out the details of what to display for current result.
