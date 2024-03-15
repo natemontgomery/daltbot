@@ -13,14 +13,27 @@
 ActiveRecord::Schema[7.1].define(version: 2024_03_15_154910) do
   create_table "addresses", force: :cascade do |t|
     t.string "raw_address"
+    t.string "street"
+    t.string "housenumber"
+    t.string "locality"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "postcode"
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["raw_address"], name: "index_addresses_on_raw_address"
   end
 
   create_table "forecasts", force: :cascade do |t|
+    t.integer "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_forecasts_on_address_id"
   end
 
 end

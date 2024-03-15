@@ -4,8 +4,9 @@ class ForecastsController < ApplicationController
   end
 
   def create
-    @forecast = Forecast.new
-
+    geocode_address
+    @forecast = Forecast.new(address: @address)
+    binding.b
     if @forecast.save
       redirect_to forecast_url(@forecast)
     else
@@ -14,22 +15,19 @@ class ForecastsController < ApplicationController
   end
 
   def show
-    @forecast = Forecast.find(params[:id])
-  end
-
-  def current
-  end
-
-  def hourly
-  end
-
-  def daily
+    @forecast = Forecast.find(permitted_params[:id])
   end
 
   protected
 
-  def geocode
-    address = Address.find_or_initialize_by(raw_address: params[:address])
-    address.save!
+  def permitted_params
+    params.permit(:id, forecast: :raw_address)
+  end
+
+  def geocode_address
+    @address = Address.find_or_initialize_by(raw_address: permitted_params[:forecast][:raw_address])
+    binding.b
+    @address.fill_in_address_fields
+    @address.save!
   end
 end

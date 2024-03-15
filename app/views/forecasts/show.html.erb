@@ -1,0 +1,5 @@
+<section>
+  <h1>Weather for <%= @forecast.address.raw_address %></h1>
+
+  <%= @forecast.fetch_current_weather %>
+</section>

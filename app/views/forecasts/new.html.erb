@@ -5,8 +5,8 @@
     <%= render partial: "errors", object: @forecast.errors %>
 
     <%= field_set_tag "It needs to know where you are first, please enter your address:" do %>
-      <%= form.label :address %>
-      <%= form.text_field :address %>
+      <%= form.label :raw_address %>
+      <%= form.text_field :raw_address %>
     <% end %>
 
     <%= form.button %>
