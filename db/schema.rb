@@ -35,8 +35,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_154910) do
     t.datetime "dt"
     t.float "temp"
     t.float "feels_like"
-    t.float "high"
-    t.float "low"
+    t.float "temp_max"
+    t.float "temp_min"
     t.float "humidity"
     t.float "pressure"
     t.datetime "created_at", null: false

@@ -9,8 +9,8 @@ class CreateForecasts < ActiveRecord::Migration[7.1]
 
       t.float :temp
       t.float :feels_like
-      t.float :high
-      t.float :low
+      t.float :temp_max
+      t.float :temp_min
       t.float :humidity
       t.float :pressure
 

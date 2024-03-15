@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe Address do
   describe '#fill_in_address_attrs' do
     it 'fills in values of all geocoded attributes' do
-      address = nil
-
-      VCR.use_cassette('geocoder/address-creation') do
-        address = described_class.create!(raw_address: '123 SE 4th St New York, NY')
-      end
+      address = described_class.create!(raw_address: '123 SE 4th St New York, NY')
 
       VCR.use_cassette('geocoder/address-lookup') do
         address.fill_in_address_attrs
