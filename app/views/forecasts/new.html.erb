@@ -1,0 +1,14 @@
+<section class="w-full max-w-lg">
+  <h1>Daltbot wishes to tell you the weather.</h1>
+
+  <%= form_with model: @forecast do |form| %>
+    <%= render partial: "errors", object: @forecast.errors %>
+
+    <%= field_set_tag "It needs to know where you are first, please enter your address:" do %>
+      <%= form.label :address %>
+      <%= form.text_field :address %>
+    <% end %>
+
+    <%= form.button %>
+  <% end %>
+</section>
