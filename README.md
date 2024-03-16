@@ -104,6 +104,9 @@ Both models have Rails' basic Timestamps as well.
 
 ### Left to Do
 
+The first thing to do if this was to become a production application would be to get the API Key hidden and encrypted using a secrets store external to the repo.
+This wasn't done to save time but plain text secrets in the repo is not something that you want to deploy to production of course.
+
 I would really like the results to be styled more.  Obviously a plain text response is not very exciting, but the functionality came first.
 
 I think some better error handling would be next, I added some basic handling but there are some cases that definitely are untested/unhandled.
