@@ -24,8 +24,6 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Weather</th>
-      <th scope="col">Temp</th>
-      <th scope="col">Feels Like</th>
       <th scope="col">High</th>
       <th scope="col">Low</th>
       <th scope="col">Humidity</th>
@@ -38,8 +36,6 @@
       <tr>
         <th><%= Time.zone.at(weather_hash[:dt]).to_fs(:long) %></th>
         <th><%= weather_hash[:weather_description].titleize %></th>
-        <td><%= "#{weather_hash["temp"]} °F" %></td>
-        <td><%= "#{weather_hash["feels_like"]} °F" %></td>
         <td><%= "#{weather_hash["temp_max"]} °F" %></td>
         <td><%= "#{weather_hash["temp_min"]} °F" %></td>
         <td><%= "#{weather_hash["humidity"]}%" %></td>
