@@ -4,6 +4,14 @@ Weather App using purely free APIs from OpenWeather.  You don't need to pay a di
 
 Named after John Dalton.
 
+Provides a 'Current' weather output and 5-day forecast using 3-hour bins.
+
+All that is needed from the user is a valid address.  If your address is ambigious then you may end up with results for an unexpected location.  The full address used is displayed at the top of the result.
+
+Each search caches the results for the Postal Code of the address used.  This cache lasts for 30 minutes.
+
+The input address is geocoded (and reverse geocoded) using the Photon API (https://photon.komoot.io/) via the Geocoder gem.
+
 ### Ruby version
 
 3.3.0 tested
