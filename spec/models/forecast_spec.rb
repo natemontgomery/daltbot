@@ -21,7 +21,8 @@ RSpec.describe Forecast do
         "pressure" => 1004,
         "temp" => 66.97,
         "temp_max" => 70.05,
-        "temp_min" => 63.21
+        "temp_min" => 63.21,
+        "weather_description" => "broken clouds"
       )
     end
   end

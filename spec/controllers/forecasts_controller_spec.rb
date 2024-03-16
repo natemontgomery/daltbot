@@ -21,7 +21,12 @@ RSpec.describe ForecastsController do
     context "when an address with a matching zip code has been searched in the last 30 minutes" do
       before do
         forecast = Forecast.create!(address: Address.create!(raw_address: 'foobar', postcode: '10036'), temp: 66.97)
-        allow(Rails.cache).to receive(:fetch).with("10036/forecast-id", expires_in: 30.minutes).and_return(forecast.id)
+
+        # We have to account for Geocoder caching.
+        allow(Rails.cache).to receive(:read).and_call_original
+
+        # Store our cache key to check behavior in test.
+        allow(Rails.cache).to receive(:read).with("10036/forecast-id").and_return(forecast.id)
       end
 
       it "uses the cached data" do

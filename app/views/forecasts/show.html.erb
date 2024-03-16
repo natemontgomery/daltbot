@@ -8,6 +8,8 @@
     <% end %>
   </h3>
 
+  <h4><%= @forecast.weather_description.titleize %></h4>
+
   <h5>Temp: <%= "#{@forecast.temp} °F" %></h5>
 
   <h5>Feels Like: <%= "#{@forecast.feels_like} °F" %></h5>

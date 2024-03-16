@@ -3,9 +3,9 @@ class CreateForecasts < ActiveRecord::Migration[7.1]
     create_table :forecasts do |t|
       t.references :address
 
-      t.string :forecast_type, index: true
-
       t.timestamp :dt
+
+      t.string :weather_description
 
       t.float :temp
       t.float :feels_like

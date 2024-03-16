@@ -4,11 +4,17 @@ class ForecastsController < ApplicationController
   end
 
   def create
+    if permitted_params[:raw_address].blank?
+      @forecast = Forecast.new
+      @forecast.errors.add(:base, "You gave me no address :(")
+      render :new, status: :bad_request
+      return
+    end
+
     geocode_address
 
-    # Create cache key off our geocoded Zip Code per requested design.
-    cache_key = "#{@address.postcode}/forecast-id"
-    cached_forecast_id = Rails.cache.read(cache_key)
+    # Check if we have a cached Forecase for the Zip Code of our Address.
+    cached_forecast_id = Rails.cache.read(@address.cache_key)
     @cached = cached_forecast_id.present? # Tell the later output that we used a cached value.
 
     @forecast = cached_forecast_id.present? ? Forecast.find(cached_forecast_id) : Forecast.new(address: @address)
@@ -30,19 +36,22 @@ class ForecastsController < ApplicationController
   end
 
   def show
-    @cached = permitted_params[:cached] == "true"
-    @forecast = Forecast.find(permitted_params[:id])
+    @cached = params[:cached] == "true"
+    @forecast = Forecast.find(params[:id])
   end
 
   protected
 
   def permitted_params
-    params.permit(:id, :cached, forecast: :raw_address)
+    params.require(:forecast).permit(:raw_address)
   end
 
   def geocode_address
-    @address = Address.find_or_initialize_by(raw_address: permitted_params[:forecast][:raw_address])
-    @address.fill_in_address_attrs
-    @address.save!
+    @address = Address.find_or_initialize_by(raw_address: permitted_params[:raw_address])
+
+    unless @address.persisted?
+      @address.fill_in_address_attrs
+      @address.save!
+    end
   end
 end

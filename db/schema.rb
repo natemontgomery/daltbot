@@ -31,8 +31,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_154910) do
 
   create_table "forecasts", force: :cascade do |t|
     t.integer "address_id"
-    t.string "forecast_type"
     t.datetime "dt"
+    t.string "weather_description"
     t.float "temp"
     t.float "feels_like"
     t.float "temp_max"
@@ -42,7 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_154910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_forecasts_on_address_id"
-    t.index ["forecast_type"], name: "index_forecasts_on_forecast_type"
   end
 
 end

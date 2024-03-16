@@ -5,9 +5,11 @@
     <%= render partial: "errors", object: @forecast.errors %>
 
     <%= field_set_tag "It needs to know where you are first, please enter your address:" do %>
-      <%= form.text_field :raw_address %>
+      <div class="form-group">
+        <%= form.text_field :raw_address, class: "form-control-lg" %>
+      </div>
     <% end %>
 
-    <%= form.button class: "mt-3" %>
+    <%= form.button "Tell Me the Weather", class: "mt-3" %>
   <% end %>
 </section>
