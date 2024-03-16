@@ -4,7 +4,7 @@ class Address < ApplicationRecord
   geocoded_by :raw_address
   reverse_geocoded_by :latitude, :longitude
 
-  # Fill in all our attributes from geocoded raw address string.
+  # Interface to fill in all our attributes from geocoded raw address string.
   def fill_in_address_attrs
     geocode
     reverse_geocoded_address = Geocoder.search([latitude, longitude]).first
@@ -25,6 +25,7 @@ class Address < ApplicationRecord
     assign_attributes(geocoded_address_attrs)
   end
 
+  # Returns a specifically formatted string for our results.
   def display_address
     "#{housenumber} #{street} #{city}, #{state} #{postcode}"
   end

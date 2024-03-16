@@ -9,39 +9,25 @@
   <h3>Current</h3>
 
   <h4><%= @forecast.weather_description.titleize %></h4>
-
   <h5>Temp: <%= "#{@forecast.temp} °F" %></h5>
-
   <h5>Feels Like: <%= "#{@forecast.feels_like} °F" %></h5>
-
   <h5>High: <%= "#{@forecast.temp_max} °F" %></h5>
-
   <h5>Low: <%= "#{@forecast.temp_min} °F" %></h5>
-
   <h5>Humidity: <%= "#{@forecast.humidity}%" %></h5>
-
-  <h5>Pressure: <%= "#{@forecast.pressure} hpa" %></h5>
+  <h5>Pressure: <%= "#{@forecast.pressure} hPa" %></h5>
 </section>
 
 <section>
-  <h3>
-    5-day Forecast (3 hour bins)
-  </h3>
+  <h3>5-day Forecast (3 hour bins)</h3>
 
   <% @forecast.parsed_forecast_datapoints.each do |weather_hash| %>
     <h4><%= Time.zone.at(weather_hash[:dt]).to_fs(:long) %> - <%= weather_hash[:weather_description].titleize %></h4>
-
     <h5>Temp: <%= "#{weather_hash["temp"]} °F" %></h5>
-
     <h5>Feels Like: <%= "#{weather_hash["feels_like"]} °F" %></h5>
-
     <h5>High: <%= "#{weather_hash["temp_max"]} °F" %></h5>
-
     <h5>Low: <%= "#{weather_hash["temp_min"]} °F" %></h5>
-
     <h5>Humidity: <%= "#{weather_hash["humidity"]}%" %></h5>
-
-    <h5>Pressure: <%= "#{weather_hash["pressure"]} hpa" %></h5>
+    <h5>Pressure: <%= "#{weather_hash["pressure"]} hPa" %></h5>
   <% end %>
 </section>
 
