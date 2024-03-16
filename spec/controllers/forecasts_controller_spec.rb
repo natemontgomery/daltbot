@@ -5,9 +5,11 @@ RSpec.describe ForecastsController do
     it "creates an address from input and generates a forecast from OpenWeather API result" do
       VCR.use_cassette('geocoder/address-lookup') do
         VCR.use_cassette('open-weather/current') do
-          expect do
-            post :create, params: {forecast: {raw_address: '123 SE 4th St New York, NY'}}
-          end.to change(Forecast, :count).by(1)
+          VCR.use_cassette('open-weather/5-day-forecast') do
+            expect do
+              post :create, params: {forecast: {raw_address: '123 SE 4th St New York, NY'}}
+            end.to change(Forecast, :count).by(1)
+          end
         end
       end
 

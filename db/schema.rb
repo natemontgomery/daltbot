@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_154910) do
     t.float "temp_min"
     t.float "humidity"
     t.float "pressure"
+    t.json "raw_forecast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_forecasts_on_address_id"

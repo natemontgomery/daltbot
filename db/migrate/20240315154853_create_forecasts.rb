@@ -14,6 +14,8 @@ class CreateForecasts < ActiveRecord::Migration[7.1]
       t.float :humidity
       t.float :pressure
 
+      t.json :raw_forecast
+
       t.timestamps
     end
   end

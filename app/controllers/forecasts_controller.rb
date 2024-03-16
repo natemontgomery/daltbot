@@ -18,7 +18,7 @@ class ForecastsController < ApplicationController
     @cached = cached_forecast_id.present? # Tell the later output that we used a cached value.
 
     @forecast = cached_forecast_id.present? ? Forecast.find(cached_forecast_id) : Forecast.new(address: @address)
-    @forecast.fetch_current_weather if cached_forecast_id.blank?
+    @forecast.fetch_all_weather if cached_forecast_id.blank?
 
     if @forecast.save
       # If we did not have a cache create one, but only if we didn't have one.
