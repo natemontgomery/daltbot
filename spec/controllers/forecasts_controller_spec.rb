@@ -15,7 +15,7 @@ RSpec.describe ForecastsController do
 
       forecast = assigns[:forecast]
       expect(forecast.address.raw_address).to eq('123 SE 4th St New York, NY')
-      expect(forecast.temp).to eq(66.97)
+      expect(forecast.temp).to eq(46.53)
 
       expect(assigns[:cached]).to eq(false)
     end

@@ -13,7 +13,7 @@ class Forecast < ApplicationRecord
     assign_attributes(
       dt: weather_summary.dt,
       weather_description: weather_summary.weather.first.description,
-      **weather_summary.main
+      **weather_summary.main.slice(*attribute_names)
     )
   end
 
@@ -31,7 +31,7 @@ class Forecast < ApplicationRecord
      {
         dt: weather_hash["dt"],
         weather_description: weather_hash["weather"].first["description"],
-        **weather_hash["main"]
+        **weather_hash["main"].slice(*attribute_names)
       }
     end
   end

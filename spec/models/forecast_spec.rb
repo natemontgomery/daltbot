@@ -16,12 +16,12 @@ RSpec.describe Forecast do
       end
 
       expect(forecast).to have_attributes(
-        "feels_like" => 65.48,
-        "humidity" => 45,
-        "pressure" => 1004,
-        "temp" => 66.97,
-        "temp_max" => 70.05,
-        "temp_min" => 63.21,
+        "feels_like" => 42.53,
+        "humidity" => 48.0,
+        "pressure" => 1016.0,
+        "temp" => 46.53,
+        "temp_max" => 46.53,
+        "temp_min" => 46.53,
         "weather_description" => "broken clouds"
       )
     end

@@ -22,12 +22,7 @@ class ForecastsController < ApplicationController
     if @forecast.save
       # If we did not have a cache create one, but only if we didn't have one.
       # If we did have a cached result we do not want to reset the expiration.
-      if @cached.blank?
-        Rails.cache.fetch("#{@address.postcode}/forecast-id", expires_in: 30.minutes) do
-          @forecast.id
-        end
-      end
-
+      Rails.cache.write("#{@address.postcode}/forecast-id", @forecast.id, expires_in: 30.minutes) unless @cached
       redirect_to "#{forecast_url(@forecast)}?cached=#{@cached}"
     else
       render :new, status: :unprocessable_entity

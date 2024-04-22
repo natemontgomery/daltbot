@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.openweathermap.org/data/2.5/weather?lat=40.7560233&lon=-73.9845629&units=imperial
+    uri: https://api.openweathermap.org/data/2.5/weather?appid=7e475559f84362711dada9890e161b6c&lat=40.7560233&lon=-73.9845629&units=imperial
     body:
       encoding: US-ASCII
       string: ''
@@ -23,11 +23,11 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Fri, 15 Mar 2024 20:29:03 GMT
+      - Mon, 22 Apr 2024 05:01:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '489'
+      - '503'
       Connection:
       - keep-alive
       X-Cache-Key:
@@ -40,7 +40,7 @@ http_interactions:
       - GET, POST
     body:
       encoding: UTF-8
-      string: '{"coord":{"lon":-73.9808,"lat":40.7648},"weather":[{"id":803,"main":"Clouds","description":"broken
-        clouds","icon":"04d"}],"base":"stations","main":{"temp":66.97,"feels_like":65.48,"temp_min":63.21,"temp_max":70.05,"pressure":1004,"humidity":45},"visibility":10000,"wind":{"speed":20.71,"deg":300,"gust":31.07},"clouds":{"all":75},"dt":1710534505,"sys":{"type":1,"id":5141,"country":"US","sunrise":1710500811,"sunset":1710543758},"timezone":-14400,"id":5125771,"name":"Manhattan","cod":200}'
-  recorded_at: Fri, 15 Mar 2024 20:29:03 GMT
+      string: '{"coord":{"lon":-73.9846,"lat":40.756},"weather":[{"id":803,"main":"Clouds","description":"broken
+        clouds","icon":"04n"}],"base":"stations","main":{"temp":46.53,"feels_like":42.53,"temp_min":46.53,"temp_max":46.53,"pressure":1016,"humidity":48,"sea_level":1016,"grnd_level":1014},"visibility":10000,"wind":{"speed":8.01,"deg":320,"gust":17.72},"clouds":{"all":65},"dt":1713762064,"sys":{"country":"US","sunrise":1713780350,"sunset":1713829349},"timezone":-14400,"id":5125771,"name":"Manhattan","cod":200}'
+  recorded_at: Mon, 22 Apr 2024 05:01:04 GMT
 recorded_with: VCR 6.2.0
