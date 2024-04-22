@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_045118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "sea_level"
+    t.float "grnd_level"
     t.index ["address_id"], name: "index_forecasts_on_address_id"
   end
 

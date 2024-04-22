@@ -13,7 +13,7 @@ class Forecast < ApplicationRecord
     assign_attributes(
       dt: weather_summary.dt,
       weather_description: weather_summary.weather.first.description,
-      **weather_summary.main.slice(*attribute_names)
+      **slice_weather_attributes(weather_summary.main)
     )
   end
 
@@ -31,8 +31,19 @@ class Forecast < ApplicationRecord
      {
         dt: weather_hash["dt"],
         weather_description: weather_hash["weather"].first["description"],
-        **weather_hash["main"].slice(*attribute_names)
+        **slice_weather_attributes(weather_hash["main"])
       }
     end
+  end
+
+  def slice_weather_attributes(weather_source)
+    filtered_weather = weather_source.slice(*attribute_names)
+    new_weather_attributes = weather_source.keys - filtered_weather.keys
+
+    if new_weather_attributes.present?
+      Rails.logger.info("NEW WEATHER ATTRIBUTES FOUND:\n\n#{new_weather_attributes}\n\n")
+    end
+
+    filtered_weather
   end
 end

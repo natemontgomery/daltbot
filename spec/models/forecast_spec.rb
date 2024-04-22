@@ -22,6 +22,8 @@ RSpec.describe Forecast do
         "temp" => 46.53,
         "temp_max" => 46.53,
         "temp_min" => 46.53,
+        "grnd_level" => 1014,
+        "sea_level" => 1016,
         "weather_description" => "broken clouds"
       )
     end
@@ -42,6 +44,24 @@ RSpec.describe Forecast do
       end
 
       expect(forecast.raw_forecast["city"]["coord"]["lat"]).to eq(40.756)
+    end
+  end
+
+  describe '#slice_weather_attributes' do
+    it 'returns attributes for Forecast model and logs any attributes it does not recognise' do
+      weather_source = {
+        "feels_like" => 42.53,
+        "humidity" => 48.0,
+        "pressure" => 1016.0,
+        "temp" => 46.53,
+        "temp_max" => 46.53,
+        "temp_min" => 46.53,
+        "foobar" => "baz",
+        "weather_description" => "broken clouds"
+      }
+
+      expect(Rails.logger).to receive(:info).with("NEW WEATHER ATTRIBUTES FOUND:\n\n[\"foobar\"]\n\n")
+      expect(described_class.new.slice_weather_attributes(weather_source)).to eq(weather_source.except("foobar"))
     end
   end
 end
